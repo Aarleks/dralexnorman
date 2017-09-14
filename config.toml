@@ -1,4 +1,4 @@
-baseurl = "/"  # End your URL with a `/` trailing slash.
+baseurl = "http://www.dralexnorman.net/"  # End your URL with a `/` trailing slash.
 title = "Alex Norman"
 copyright = "&copy; 2017 Alex Norman"
 theme = "hugo-academic"
@@ -24,7 +24,7 @@ defaultContentLanguageInSubdir = false
 [params]
   name = "Alex Norman"
   role = "Senior Lecturer"
-  organization = "Western Sydney University"
+  organization = "Graduate Research School\r\nWestern Sydney University"
   organization_url = "https://www.westernsydney.edu.au/graduate_research_school"
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "avatar.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
@@ -178,7 +178,7 @@ defaultContentLanguageInSubdir = false
   weight = 3
 
 [[menu.main]]
-  name = "Projects"
+  name = "Research Projects"
   url = "#projects"
   weight = 4
 
