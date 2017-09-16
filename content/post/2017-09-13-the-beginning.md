@@ -45,10 +45,11 @@ A Twitter script:
 Wow!
 
 And YouTube videos, as well!
-{{< youtube kK_2mzBARTU >}}
+{{< youtube _GkBzDQfoHg >}}
 
 And Instagram!
 {{<instagram BZBCJ2hFwuq>}}
 
 OMG!! Gists! (which I found [here](https://jabranham.com/blog/2016/12/analyzing-a-bib-file/))
+
 {{< gist jabranham 887495eaf029680316fecb374f0723e0 >}}
