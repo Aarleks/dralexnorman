@@ -82,7 +82,7 @@ defaultContentLanguageInSubdir = false
   highlight = true
   highlight_languages = ["r", "python", "arduino"]
   highlight_style = "monokai"
-  # highlight_version = "9.9.0"
+  highlight_version = "9.9.0"
 
   # Enable native social sharing buttons?
   sharing = true
