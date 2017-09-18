@@ -4,8 +4,8 @@ author: Alex Norman
 date: '2017-09-13'
 draft: false
 slug: the-beginning
-categories: []
-tags: []
+categories: ["Blogging"]
+tags: ["R", "rmarkdown", "blogdown", "hugo"]
 header:
   caption: ''
   image: ''
