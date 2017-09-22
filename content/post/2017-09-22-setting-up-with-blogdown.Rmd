@@ -32,7 +32,7 @@ My methods and choices might not suit you. Likewise, my knowledge is incomplete.
 {{% /alert %}}
 
 # Setup
-The first thing I did was read the [blogdown book](https://bookdown.org/yihui/blogdown/). The book was written by the author of the package,[Yihui Xie](https://yihui.name/), and two co-authors; [Amber Thomas](https://proquestionasker.github.io/)[^1] and [Alison Presmanes Hill](https://apreshill.rbind.io/). The book is a comprehensive guide to getting started with the `blogdown` package to build a website with [Hugo](https://gohugo.io/). There are some good recommendations 
+The first thing I did was read the [blogdown book](https://bookdown.org/yihui/blogdown/). The book was written by the author of the package,[Yihui Xie](https://yihui.name/), and two co-authors; [Amber Thomas](https://proquestionasker.github.io/)[^1] and [Alison Presmanes Hill](https://apreshill.rbind.io/). The language is simple and the text easy to follow, and it's a comprehensive guide to getting started with the `blogdown` package to build a website with [Hugo](https://gohugo.io/). There are some good recommendations 
 
 Easy install package + Hugo is doable within RStudio thank you Blogdown.
 
