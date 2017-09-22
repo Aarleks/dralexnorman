@@ -1,0 +1,74 @@
+---
+title: Setting up with Blogdown
+author: Alex Norman
+date: '2017-09-22'
+slug: setting-up-with-blogdown
+categories:
+  - Blogging
+summary: An incomplete walkthtrough of my blogdown setup.
+tags:
+  - blogdown
+  - R
+  - rmarkdown
+math: true
+draft: false
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+    toc_depth: 1
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#setup"><span class="toc-section-number">1</span> Setup</a></li>
+<li><a href="#google-analytics"><span class="toc-section-number">2</span> Google Analytics</a></li>
+<li><a href="#searching-for-ideas"><span class="toc-section-number">3</span> Searching for Ideas</a></li>
+</ul>
+</div>
+
+<p>When I decided to make the effort to get back into maintaining my website/blog I knew one of the things that would help was better engagement with the building of the site itself. WordPress is excellent for building websites of many kinds, but I felt a sense of only having partial understanding and control which led, I think, to something of a lack of engagement. I also disliked that I had to login to do anything (in reality I didn’t) and that everything was a lot more complicated than it needed to be.</p>
+<p>While doing some professional procrastination looking into <span class="math inline">\(\rm \LaTeX\)</span> and plain text document production, I came across <code>bookdown</code> and then discovered <code>blogdown</code>. I knew right away this was what I needed. <code>R + blog = commitment</code> (hopefully). Because I found the setup guides I read so helpful, and because I figured creating a recording of my choices may be useful, I decided to write a basic setup post.</p>
+<p>{{% alert note %}} My methods and choices might not suit you. Likewise, my knowledge is incomplete. If you want to set up your own site, make sure you read the appropriate documentation before you begin. {{% /alert %}}</p>
+<div id="setup" class="section level1">
+<h1><span class="header-section-number">1</span> Setup</h1>
+<p>The first thing I did was read the <a href="https://bookdown.org/yihui/blogdown/">blogdown book</a>. The book was written by the author of the package,<a href="https://yihui.name/">Yihui Xie</a>, and two co-authors; <a href="https://proquestionasker.github.io/">Amber Thomas</a><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> and <a href="https://apreshill.rbind.io/">Alison Presmanes Hill</a>. The book is a comprehensive guide to getting started with the <code>blogdown</code> package to build a website with <a href="https://gohugo.io/">Hugo</a>. There are some good recommendations</p>
+<p>Easy install package + Hugo is doable within RStudio thank you Blogdown.</p>
+<p>My install threw some warnings.</p>
+<p>I also really liked Alison Presmanes Hill’s ‘blue.css’ look, so I cloned that and used it here.</p>
+</div>
+<div id="google-analytics" class="section level1">
+<h1><span class="header-section-number">2</span> Google Analytics</h1>
+<p>Going to Google Analytics I realised I already had a blogspot (two, in fact) being tracked. Took some time to figure out how to get my tracking code. In the end:</p>
+<ul>
+<li>Admin</li>
+<li>Account dropdown menu -&gt; Create new account (you can have up to 100)</li>
+<li>Follow prompts from there. Easy enough. I already had a address to input, so it might be worth leaving this until you know where your site is going to be.</li>
+</ul>
+<p>When I first tried to serve the site I got this error:</p>
+<pre><code>Error: unknown command &quot;#&quot; for &quot;hugo&quot;
+Run &#39;hugo --help&#39; for usage.
+Error: unknown command &quot;#&quot; for &quot;hugo&quot;
+Run &#39;hugo --help&#39; for usage.
+The system cannot find the path specified.
+Error in shell(cmd, mustWork = TRUE, intern = intern) :
+  &#39;&quot;C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe&quot; -b /&quot;/&quot;  # End your URL with a `/` trailing slash. -D -F -d &quot;public&quot; -t hugo-academic&#39; execution failed with error code 1
+In addition: Warning messages:
+1: running command &#39;&quot;C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe&quot; -b /&quot;/&quot;  # End your URL with a `/` trailing slash. -D -F -d &quot;public&quot; -t hugo-academic&#39; had status 65535
+2: running command &#39;&quot;C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe&quot; -b /&quot;/&quot;  # End your URL with a `/` trailing slash. -D -F -d &quot;public&quot; -t hugo-academic&#39; had status 65535
+3: running command &#39;C:\WINDOWS\system32\cmd.exe /c &quot;C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe&quot; -b /&quot;/&quot;  # End your URL with a `/` trailing slash. -D -F -d &quot;public&quot; -t hugo-academic&#39; had status 1</code></pre>
+<p>But within 5mins of searching for possible causes of this error, I found that simply pasting this code into the .toml file stopped it.</p>
+<pre><code>ignoreFiles = [&quot;\\.Rmd$&quot;, &quot;\\.Rmarkdown$&quot;, &quot;_files$&quot;, &quot;_cache$&quot;]</code></pre>
+<p>Whether it’s the right thing to do is another matter.</p>
+</div>
+<div id="searching-for-ideas" class="section level1">
+<h1><span class="header-section-number">3</span> Searching for Ideas</h1>
+<p>Later on, while hunting around for tips and ideas I came across this site, by Yu Cheng <a href="https://fischcheng.github.io/2017/02/27/updated-hugo-academic-theme-to-sync-the-upstream-repo/" class="uri">https://fischcheng.github.io/2017/02/27/updated-hugo-academic-theme-to-sync-the-upstream-repo/</a> which demonstrates shortcodes for Twitter, Instagram, and YouTube content. Awesome! Of course, that led me down a rabbithole, which yielded the Hugo platform’s <a href="https://gohugo.io/content-management/shortcodes/">own page about shortcodes</a>.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Amber’s site has some great examples of dataviz using <code>R</code>.<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
