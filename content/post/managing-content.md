@@ -1,6 +1,6 @@
 +++
 date = 2016-04-18
-draft = true
+draft = false
 tags = ["academic", "hugo"]
 title = "Managing content"
 math = false

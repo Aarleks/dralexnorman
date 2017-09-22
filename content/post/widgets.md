@@ -1,6 +1,6 @@
 +++
 date = 2016-04-19
-draft = true
+draft = false
 tags = ["academic", "hugo"]
 title = "Customizing the homepage with widgets"
 math = false
