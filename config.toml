@@ -217,4 +217,4 @@ defaultContentLanguageInSubdir = false
 
 # This came up as an warning message from the first run. I inserted the line
 # below and the warning stopped.
-#ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
