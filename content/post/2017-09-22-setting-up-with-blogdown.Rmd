@@ -19,59 +19,113 @@ output:
     toc_depth: 1
 ---
 
-```{r include = FALSE}
-knitr::opts_chunk$set(eval = FALSE, collapse = TRUE, comment = NA, tidy = FALSE)
-```
+When I decided to make the effort to get back into maintaining my website/blog I knew one of the things that would help was better engagement with the building of the site itself. WordPress is excellent for building websites of many kinds, but I felt a sense of only having partial understanding and control which led, I think, to something of a lack of engagement. I also disliked that I had to login to do anything (in reality I didn't) and that everything was a lot more complicated than it needed to be (it really wasn't).
 
-When I decided to make the effort to get back into maintaining my website/blog I knew one of the things that would help was better engagement with the building of the site itself. WordPress is excellent for building websites of many kinds, but I felt a sense of only having partial understanding and control which led, I think, to something of a lack of engagement. I also disliked that I had to login to do anything (in reality I didn't) and that everything was a lot more complicated than it needed to be.
-
-While doing some professional procrastination looking into $\rm \LaTeX$ and plain text document production, I came across `bookdown` and then discovered `blogdown`. I knew right away this was what I needed. `R + blog = commitment` (hopefully). Because I found the setup guides I read so helpful, and because I figured creating a recording of my choices may be useful, I decided to write a basic setup post.
+While doing some professional procrastination looking into $\rm \LaTeX$ and plain text document production, I came across `bookdown` and then immediately discovered it's sibling, the R package `blogdown`. I knew right away this was what I needed. Here was a website building platform that was all plain text. Blogdown uses `Markdown` and `RMarkdown` for content. Now that I had found it I knew it was exactly what I was looking for; `R + blog = commitment` (hopefully). Because I found the setup guides I read so helpful, and because I figured creating a recording of my choices may be useful, I decided to write this basic setup post.
 
 {{% alert note %}}
 My methods and choices might not suit you. Likewise, my knowledge is incomplete. If you want to set up your own site, make sure you read the appropriate documentation before you begin.
 {{% /alert %}}
 
 # Setup
-The first thing I did was read the [blogdown book](https://bookdown.org/yihui/blogdown/). The book was written by the author of the package,[Yihui Xie](https://yihui.name/), and two co-authors; [Amber Thomas](https://proquestionasker.github.io/)[^1] and [Alison Presmanes Hill](https://apreshill.rbind.io/). The language is simple and the text easy to follow, and it's a comprehensive guide to getting started with the `blogdown` package to build a website with [Hugo](https://gohugo.io/). There are some good recommendations 
+After deciding to use `blogdown`, the first thing I did was read the [blogdown book](https://bookdown.org/yihui/blogdown/). The book was written by the author of the package,[Yihui Xie](https://yihui.name/), and two co-authors; [Amber Thomas](https://proquestionasker.github.io/)[^1] and [Alison Presmanes Hill](https://apreshill.rbind.io/). The language is simple and the text easy to follow, and it's a comprehensive guide to getting started with the `blogdown` package to build a website with [Hugo](https://gohugo.io/). My advice would be to follow most, if not all of the recommendations the authors make. 
 
-Easy install package + Hugo is doable within RStudio thank you Blogdown.
+With blogdown installed - `install.packages("blogdown")` - it's easy enough to simply get going and have a functional website ready to host in minutes. From here I followed Alison Presmanes Hill's [walkthrough](https://apreshill.rbind.io/post/up-and-running-with-blogdown/). Her post covers it all pretty well, so head over for more details. 
 
-My install threw some warnings.
+I decided to go with the hugo-academic theme, just like a billion other academics, it seems. I also really liked Alison Presmanes Hill's `blue.css` look, so I [cloned that](https://github.com/rbind/apreshill/blob/master/static/css/blue.css) and used it here (thanks Alison!). 
 
-I also really liked Alison Presmanes Hill's 'blue.css' look, so I cloned that and used it here. 
-
-# Google Analytics
-Going to Google Analytics I realised I already had a blogspot (two, in fact) being tracked. Took some time to figure out how to get my tracking code. In the end:
+# Disqus and Google Analytics
+Inside `config.toml` you can configure your Disqus and Google Analytics settings. Going to Google Analytics I realised I already had a blogspot (two, in fact) being tracked. Took some time to figure out how to get my tracking code. In the end:
 
 * Admin
 * Account dropdown menu -> Create new account (you can have up to 100)
 * Follow prompts from there. Easy enough. I already had a address to input, so it might be worth leaving this until you know where your site is going to be. 
 
-When I first tried to serve the site I got this error:
-```
-Error: unknown command "#" for "hugo"
-Run 'hugo --help' for usage.
-Error: unknown command "#" for "hugo"
-Run 'hugo --help' for usage.
-The system cannot find the path specified.
-Error in shell(cmd, mustWork = TRUE, intern = intern) :
-  '"C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe" -b /"/"  # End your URL with a `/` trailing slash. -D -F -d "public" -t hugo-academic' execution failed with error code 1
-In addition: Warning messages:
-1: running command '"C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe" -b /"/"  # End your URL with a `/` trailing slash. -D -F -d "public" -t hugo-academic' had status 65535
-2: running command '"C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe" -b /"/"  # End your URL with a `/` trailing slash. -D -F -d "public" -t hugo-academic' had status 65535
-3: running command 'C:\WINDOWS\system32\cmd.exe /c "C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe" -b /"/"  # End your URL with a `/` trailing slash. -D -F -d "public" -t hugo-academic' had status 1
-```
-But within 5mins of searching for possible causes of this error, I found that simply pasting this code into the .toml file stopped it. 
+# Building Content
+Here was when I hit my first snag. When I first tried to serve the site locally using `blogdown::serve_site()` I got this error:
+
+>Error: unknown command "#" for "hugo"  
+Run 'hugo --help' for usage.  
+Error: unknown command "#" for "hugo"  
+Run 'hugo --help' for usage.  
+The system cannot find the path specified.  
+Error in shell(cmd, mustWork = TRUE, intern = intern):  
+  '"C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe" -b /"/"  # End your URL with a \`/\` trailing slash. -D -F -d "public" -t hugo-academic' execution failed with error code 1  
+In addition: Warning messages:  
+1: running command '"C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe" -b /"/"  # End your URL with a \`/\` trailing slash. -D -F -d "public" -t hugo-academic' had status 65535  
+2: running command '"C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe" -b /"/"  # End your URL with a \`/\` trailing slash. -D -F -d "public" -t hugo-academic' had status 65535  
+3: running command 'C:\WINDOWS\system32\cmd.exe /c "C:\Users\Aarle\AppData\Roaming\Hugo\hugo.exe" -b /"/"  # End your URL with a \`/\` trailing slash. -D -F -d "public" -t hugo-academic' had status 1
+
+The problem was it didn't seem to have anything to do with my `config.toml` file, where I figured all the main command options were; I had already removed the uses of `#` and had put my web address (with `/`) in the `baseurl` option. Nonetheless, within 5mins of searching for possible causes, I experimented with simply pasting the following code into `config.toml`, and found the error ceased. 
 ```
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 ```
 
-Whether it's the right thing to do is another matter.
+This is a recommended addition in the [chapter on Hugo](https://bookdown.org/yihui/blogdown/configuration.html#options) in the blogdown book. Whether it's the right thing to do is another matter; it worked.
 
-# Searching for Ideas
-Later on, while hunting around for tips and ideas I came across this site, by Yu Cheng https://fischcheng.github.io/2017/02/27/updated-hugo-academic-theme-to-sync-the-upstream-repo/
-which demonstrates shortcodes for Twitter, Instagram, and YouTube content. Awesome!
-Of course, that led me down a rabbithole, which yielded the Hugo platform's [own page about shortcodes](https://gohugo.io/content-management/shortcodes/).
+With that sorted I began building content and deleting the template placeholder material. Because it's `R`, everything in every post is written in either `RMarkdown` or plain `Markdown`. It's all very easy, and it's a delight to use. 
+
+# Learning to Drive
+The ease of adding content is the thing I like most about about using blogdown. If I want to add a post to be blog (or any other part of the site, for that matter), I simply call the `blogdown::new_post()` function and begin typing in the `.md` or `.Rmd` file that is created. Once ready, use git bash to commit and push to GitHub, and that's it. The post is live within seconds. What's more, writing in Markdown is a breeze. See [here](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) for a guide.
+
+One of the important 'value adds' of `blogdown` is it's incorporation of R code chunks, thanks to `RMarkdown` and the `knitr` package. So, for instance, if I wanted to show you some of my work in R here on the website I could simply type:
+
+```{r eval = FALSE}
+library(ggplot2)
+ggplot(diamonds, aes(x = carat, y = price, colour = clarity)) +
+  geom_point() +
+  xlab("Carats") + ylab("Price") + 
+  ggtitle("Diamonds")
+```
+
+But I can also just run the code here and produce the result for you:
+```{r echo = FALSE}
+library(ggplot2)
+ggplot(diamonds, aes(x = carat, y = price, colour = clarity)) +
+  geom_point() +
+  xlab("Carats") + ylab("Price") + 
+  ggtitle("Diamonds")
+```
+Cool, eh! This is a great feature not only for producing data viz content, but for operating in the spirit of reproducible research. 
+
+While hunting around for tips and ideas I came across this site, by Yu Cheng https://fischcheng.github.io/2017/02/27/updated-hugo-academic-theme-to-sync-the-upstream-repo/ which demonstrates shortcodes for Twitter, Instagram, and YouTube content. Awesome! And, of course, that led me down a rabbit hole, which yielded the Hugo platform's [own page about shortcodes](https://gohugo.io/content-management/shortcodes/).
+
+Interestingly, there are all sorts of hidden gems.
+
+A Twitter script:
+```
+{{<tweet 907269861574930432>}}
+```
+{{<tweet 907269861574930432>}}
+
+Wow!
+
+And YouTube videos, as well!
+```
+{{<youtube _GkBzDQfoHg>}}
+```
+{{<youtube _GkBzDQfoHg>}}
+
+
+And Instagram!
+```
+{{<instagram BZBCJ2hFwuq>}}
+```
+{{<instagram BZBCJ2hFwuq>}}
+
+OMG!! Gists! (which I found [here](https://jabranham.com/blog/2016/12/analyzing-a-bib-file/))
+```
+{{<gist jabranham 887495eaf029680316fecb374f0723e0>}}
+```
+{{<gist jabranham 887495eaf029680316fecb374f0723e0>}}
+
+One of the great things about `blogdown` is that if you see something cool in someone else's site, you can simply head over to their GitHub repo for it and check out how they did it. No screwing around with installing widgets or trying to make addons play nicely. Just type (or `copy-paste`)
+
+# Pushing to Netlify
+As I mentioned at the start, I had a WordPress blog with my own domain name hosted by Bluehost. I decided to go with the recommendation in the blogdown book, however, and deploy the site to [Netlify](https://www.netlify.com/). It's free and, with a GitHub (or similar) repo properly set up, it's easy. You simply connect your GitHub account to Netlify, then tell the latter which repo your blogdown site is in, and away you go. That process was also completely straightforward, and again I'll refer you to Alison Presmanes Hill's [walkthrough](https://apreshill.rbind.io/post/up-and-running-with-blogdown/) for help. 
+
+I will say, however, that I needed to use `hugo` for my build command, and `HUGO_VERSION` with `0.27` as my Build Environment variables. Apart from that, it was all quick and simple. Joy!
+
 
 [^1]: 
 Amber's site has some great examples of dataviz using `R`.
