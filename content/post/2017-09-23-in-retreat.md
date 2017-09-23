@@ -13,7 +13,7 @@ tags:
 header:
   caption: ''
   image: ''
-Draft: true
+Draft: TRUE
 ---
 
 Contemplative tourism??
