@@ -6,7 +6,7 @@ date = "2016-04-20T00:00:00"
 draft = false
 
 title = "Teaching"
-subtitle = "The Master of Research Programme at Western Sydney University"
+subtitle = "The Master of Research programme at Western Sydney University"
 widget = "custom"
 
 # Order that this section will appear in.
