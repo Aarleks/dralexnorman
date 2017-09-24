@@ -6,7 +6,7 @@ date = "2016-04-20T00:00:00"
 draft = false
 
 title = "Teaching"
-subtitle = ""
+subtitle = "Things and stuff"
 widget = "custom"
 
 # Order that this section will appear in.
@@ -14,14 +14,9 @@ weight = 60
 
 +++
 
-This is an example of using the *custom* widget to create your own homepage section.
+I am the Director of the Academic Programme for the Master of Research degree at Western Sydney University. In that capacity I am responsible for coordinating and teaching into the following three units that run every semester:
 
-I am a teaching instructor for the following courses at University X:
+- 800166: [Research Design 1: Theories of Enquiry](http://handbook.westernsydney.edu.au/hbook/unit.aspx?unit=800166.1)
+- 800169: [Research Design 2: Practices of Research](http://handbook.westernsydney.edu.au/hbook/unit.aspx?unit=800169.1)
+- 800168: [Research Literacies](http://handbook.westernsydney.edu.au/hbook/unit.aspx?unit=800168.1)
 
-- CS101: An intro to computer science
-- CS102: An intro to computer science
-- CS103: An intro to computer science
-- CS104: An intro to computer science
-- CS105: An intro to computer science
-- CS106: An intro to computer science
-- CS107: An intro to computer science
