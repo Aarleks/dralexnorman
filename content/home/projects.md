@@ -26,16 +26,16 @@ view = 1
   tag = "*"
   
 [[filter]]
-  name = "Deep Learning"
-  tag = ".deep-learning"
+  name = "Sauna Motivation"
+  tag = ".sauna-motivation"
 
 [[filter]]
   name = "Contemplative Retreats"
   tag = ".contemplative-retreats"
 
 [[filter]]
-  name = "Other"
-  tag = ".demo"
+  name = "HDR Numeracy"
+  tag = ".numeracy-diagnostic"
 
 +++
 
