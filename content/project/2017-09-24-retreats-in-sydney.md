@@ -5,7 +5,7 @@ date: '2017-09-24'
 slug: contemplative-retreats-in-sydney
 summary: "Mapping and understanding the use of retreats by contemplative-oriented community groups in Sydney, Australia."
 categories: []
-tags: ["contempative-retreats"]
+tags: ["contemplative-retreats"]
 header:
   caption: ''
   image: ''

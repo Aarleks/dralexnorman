@@ -30,7 +30,7 @@ view = 1
   tag = ".deep-learning"
 
 [[filter]]
-  name = "Contamplative Retreats"
+  name = "Contemplative Retreats"
   tag = ".contemplative-retreats"
 
 [[filter]]
