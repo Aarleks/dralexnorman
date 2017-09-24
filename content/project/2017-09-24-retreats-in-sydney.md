@@ -3,7 +3,7 @@ title: Contemplative Retreats in Sydney
 author: Alex Norman
 date: '2017-09-24'
 slug: contemplative-retreats-in-sydney
-summary: "Mapping and understanding the use of retreats by contemplative-oriented community groups in Sydney, Australia."
+summary: "This exploratory project aims to identify and develop an understanding of the use of retreats by members of Sydney-based community groups which include contemplative practices as a core feature of their identity."
 categories: []
 tags: ["contemplative-retreats"]
 header:
