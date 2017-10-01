@@ -1,6 +1,6 @@
 baseurl = "https://www.dralexnorman.net/"  # End your URL with a `/` trailing slash.
 title = "Alex Norman"
-copyright = "&copy; 2017 Alex Norman"
+copyright = "&copy; 2016-2017 Alex Norman"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
@@ -24,7 +24,7 @@ defaultContentLanguageInSubdir = false
 [params]
   name = "Alex Norman"
   role = "Senior Lecturer"
-  organization = "Graduate Research School\r\nWestern Sydney University"
+  organization = "Graduate Research School </br> Western Sydney University"
   organization_url = "https://www.westernsydney.edu.au/graduate_research_school"
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "avatar.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
