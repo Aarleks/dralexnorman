@@ -24,7 +24,7 @@ defaultContentLanguageInSubdir = false
 [params]
   name = "Alex Norman"
   role = "Senior Lecturer"
-  organization = "Graduate Research School </br> Western Sydney University"
+  organization = "Graduate Research School \r\n Western Sydney University"
   organization_url = "https://www.westernsydney.edu.au/graduate_research_school"
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "avatar.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
