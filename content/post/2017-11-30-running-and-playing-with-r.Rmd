@@ -1,0 +1,13 @@
+---
+title: Running and playing with R
+author: ''
+date: '2017-11-30'
+slug: running-and-playing-with-r
+categories:
+  - Finding Things Out
+tags:
+  - R
+  - running
+Draft: TRUE
+---
+
