@@ -1,0 +1,92 @@
+---
+title: Running and playing with R
+author: ''
+date: '2017-12-07'
+slug: running-and-playing-with-r
+categories:
+  - Finding Things Out
+tags:
+  - R
+  - running
+Draft: FALSE
+---
+
+
+
+<p>Lots of people record their movement when they go out for run/walk/swim/cycle, and subsequently upload those data to sites like <a href="https://www.strava.com">Strava</a> or <a href="https://www.endomondo.com">Endomondo</a>. While such sites often provide useful and interesting assessments of one’s records and <a href="https://blog.strava.com/analyze-your-fitness-with-heart-rate-data-13178/">‘fitness’</a>, there is usually little possibility for besopke analyses. By using APIs and R, it is possible to examine one’s data and do some cool analyses and visualisations.</p>
+<p>I’ve been running on and off for about 3 years now. I used to hate it. But a few years ago while running around parks chasing my kids I began to think it was… fun. When you’re not sprinting all out, running turns out to be as enjoyable as walking! This discovery occurred during a period of high work stress for me, combined with long chair-bound days. So, I took up running both for fitness and stress relief. I think it worked, and it certainly coincided with feeling better.</p>
+<p>It also coincided with some pleasant geeking out at the tracking one could do. I found I liked tracking my runs so I could see where I went (even though I knew that), how long it took (knew that, too), and how fast I was going (easy enough to work out, given the other two factors). As someone who loves staring at maps to plot future routes and go over old journeys, I was pretty easily sold on the whole GPS watch thing.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>Being an R newbie I also realised that the data might be interesting to play with for learning both about R and about myself. The standard numbers given on sites like Strava are fine, but sometimes I want some kind of measure of my running workload relative to past efforts. Fast forward three years and I figured it was finally time to have a play with my running data in R.</p>
+<p>In my internet running meanderings, I came across Jonathan Savage’s website, <a href="http://fellrnr.com/wiki/Main_Page">Fellrnr.com</a>. It’s awesome, and there’s a lot of great information there. What caught my eye, however, was the construct of ‘running economy’: an estimation of “how far and fast you can run with a given amount of energy”.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> But it was Savage’s pitch for <a href="http://fellrnr.com/wiki/Relative_Running_Economy">‘relative running economy’</a> as a metric that everyday runners could figure for themselves that peaked my R interest. For one, it is something one can calculate from tracker data, and for two, it makes some intuitive sense as a calculation of effort. Relative running economy is a number based on heartbeats per distance. As long as you’re recording heartbeats, time, and distance (in this case via GPS), you can calculate your relative running economy.</p>
+<p>Now, it’s important to note that the number itself is meaningless on its own. Relative running economy numbers only carry meaning in relation to other relative running economy nubmers from the same person. Even then they should be read with caution. What it can show, however, is change in the amount of ‘work’ it takes to run over time.</p>
+<p>So, how do we figure relative running economy? Savage gives us this formular:</p>
+<p><code>Total Beats = (Average Heart Rate – Resting Heart Rate) * Time in Minutes</code><br />
+<code>Work Per Mile = Total Beats / Distance in Miles</code><br />
+<code>Efficiency = 1 / Work Per Mile * 100,000</code></p>
+<p>But that’s in miles and I’m from the rest of the world, so I use kilometers. Because the number is a relative construct the unit doesn’t matter so much as long as it’s consistent. Let’s try again:</p>
+<p><code>Total Beats = (Average Heart Rate – Resting Heart Rate) * Time in Minutes</code><br />
+<code>Work Per km = Total Beats / Distance in km</code><br />
+<code>Efficiency = 1 / Work Per km * 100,000</code></p>
+<p>That’s better! And with that, we can move to R and turn it into a nice little function:</p>
+<pre class="r"><code>relative_economy &lt;- function(distance, total_time, restingHR, averageHR){
+  
+  total_beats &lt;- (averageHR - restingHR) * (total_time/60)
+  work_per_km &lt;- total_beats/(distance/1000)
+  efficiency &lt;- 1 / work_per_km * 100000
+  return(efficiency)
+}</code></pre>
+<p>Note that the distance argument should be a value in meters, and that total_time should be an integer representing seconds; I’ll explain why below. Note also the <code>restingHR</code> argument. Savage doesn’t say too much about this for the purposes of the calculation, but I figure a recent measurement should suffice.</p>
+<p>Now we just need some data to work with. For that, we head to Strava and their API.</p>
+<p>To get data from Strava I’m using <a href="https://beckmw.wordpress.com">Marcus Beck’s</a> excellent <code>rStrava</code> package. Marcus’ <a href="https://github.com/fawda123/rStrava">readme</a> has a detailed explanation of setup and available functions, so I won’t repeat that here.</p>
+<p>Once you’re all set with your API stuff (client ID, app secret, etc) then it’s time to pull data from Strava.</p>
+<p>First, rStrava goes to work with two functions:</p>
+<pre class="r"><code># get activities from Strava
+my_acts &lt;- get_activity_list(stoken) 
+
+# Create a dataframe of activities
+runs &lt;- compile_activities(my_acts)</code></pre>
+<p>Inside <code>runs</code> is a dataframe with observations of 51 variables. We’re only interested in a few, and we need to manipulate them a bit. Firstly:</p>
+<pre class="r"><code># Change the local time to POSIXct format for later processing
+runs$start_date_local &lt;- date(runs$start_date_local)
+
+# Filter the dataframe to the required date range
+filtered_runs &lt;- filter(runs, ymd(runs$start_date_local) &gt;= &#39;2017-07-01&#39;)</code></pre>
+<p>So, six month’s worth of running will be the dataframe.</p>
+<p>Next we add the resting heartrate data. I track mine in a Google Sheet, so I’m using the <code>googledrive</code> package to grab the data, and <code>lubridate</code> (as above) to manipulate the date data:</p>
+<pre class="r"><code># Get restingHR + bodyweight data from Google Drive
+x &lt;- drive_find(pattern = &quot;Weight-RHR Form&quot;)
+drive_download(x[1,], type = &quot;csv&quot;)
+weight_heart_data &lt;- select(read.csv(&quot;Weight-RHR Form (Responses).csv&quot;),
+                            -Timestamp)
+weight_heart_data$Date &lt;- date(dmy(weight_heart_data$Date, tz = &quot;Australia/Sydney&quot;))</code></pre>
+<p>And now join this to our runs dataframe, adding in any missing resting heartrate values with a default:</p>
+<pre class="r"><code># Join the two data frame by date
+filtered_runs &lt;- left_join(filtered_runs, weight_heart_data, by = c(&quot;start_date_local&quot; = &quot;Date&quot;))
+
+# Insert missing Resting Heart Rate data with a default value
+filtered_runs$Resting.Heart.Rate[is.na(filtered_runs$Resting.Hear.Rate)] &lt;- 53</code></pre>
+<p>And, finally, we can add Jonathan Savage’s relative running economy values to each row:</p>
+<pre class="r"><code># Add relative running economy data
+filtered_runs$economy &lt;- relative_economy(filtered_runs$distance, 
+                                          filtered_runs$moving_time, 
+                                          filtered_runs$Resting.Hear.Rate,
+                                          as.numeric(filtered_runs$average_heartrate))</code></pre>
+<p>Now let’s plot:</p>
+<pre class="r"><code># Make a plot of the economy data
+ggplot2::ggplot(filtered_runs, aes(x = start_date_local, y = economy))+
+  geom_point(size = 1)+
+  geom_smooth +
+  xlab(&quot;Date&quot;) + ylab(&quot;Economy&quot;) + 
+  ggtitle(&quot;Relative Running Economy&quot;)</code></pre>
+<div class="figure">
+<img src="/img/running_economy.jpeg" />
+
+</div>
+<p>And there it is! Looks like I’m getting more economical as of early December. I’ll create a separate post about my December R-Running Project. In the meantime, if you’re interested, here is the <a href="">complete gist</a>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>A story for another time is how this, via long and winding roads, led to an interest in mechanical watches, with which I am now obsessed.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>For the references Savage uses to discuss running economy, scroll to the bottom of the page at; Jonathan Savage, ‘Running Economy’, Fellrnr.com, <a href="http://fellrnr.com/wiki/Running_Economy" class="uri">http://fellrnr.com/wiki/Running_Economy</a>.<a href="#fnref2">↩</a></p></li>
+</ol>
+</div>
