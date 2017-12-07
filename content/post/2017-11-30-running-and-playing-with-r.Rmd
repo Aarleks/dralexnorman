@@ -110,7 +110,7 @@ ggplot2::ggplot(filtered_runs, aes(x = start_date_local, y = economy))+
 ```
 ![](/img/running_economy.jpeg)
 
-And there it is! Looks like I'm getting more economical as of early December. I'll create a separate post about my December R-Running Project. In the meantime, if you're interested, here is the [complete gist]().
+And there it is! Looks like I'm getting more economical as of early December. I'll create a separate post about my December R-Running Project. In the meantime, if you're interested, here is the [complete gist](https://gist.github.com/Aarleks/64f5146c7dfaa4f5475802e8c94ac5bd).
 
 [^1]: A story for another time is how this, via long and winding roads, led to an interest in mechanical watches, with which I am now obsessed. 
 [^2]: For the references Savage uses to discuss running economy, scroll to the bottom of the page at; Jonathan Savage, 'Running Economy', Fellrnr.com, http://fellrnr.com/wiki/Running_Economy.
