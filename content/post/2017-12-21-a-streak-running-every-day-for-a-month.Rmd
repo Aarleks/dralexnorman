@@ -41,7 +41,7 @@ The other observation of note is that my short-distance speed seems to have incr
 
 Constant sensation of 'having run yesterday' (duh...), but am busting to do a proper long run (more than 1hr).
 
-**Quantitative Summary:** Using the code from my [previous post](), we can have a look at what my running economy is doing.
+**Quantitative Summary:** Using the code from my [previous post](https://www.dralexnorman.net/post/running-and-playing-with-r/), we can have a look at what my running economy is doing.
 
 Let's look at the numbers first:  
 I've done 25 runs in 24 days (one day was to and from the shops), with a minimum distance of 656m (although that was immediately after a 1.3km run) and a maximum of 6.7km. Pretty short, overall, but having never been on a streak before I'm taking it easy.
