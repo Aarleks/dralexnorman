@@ -1,0 +1,27 @@
+---
+title: Running Economy Experiment - Results + follow-up
+author: Alex Norman
+date: '2018-02-17'
+slug: running-economy-experiment-results-follow-up
+categories:
+  - Finding Things Out
+tags:
+  - R
+  - running
+Draft: TRUE
+---
+When I started running, the idea of doing so every day seemed... mad... dangerous. Now I can see its virtues, one of which is fitness. Since late-November I have been running every day (as of 17/02/18 I've run for 81 consecutive days). My [last post](https://www.dralexnorman.net/post/a-streak-running-every-day-for-a-month/) was an intro and half-way(ish) update on my `N=1` experiment on the effect of running every day for a month upon running economy. In this post I will explore the data from that month plus look at the follow-up data.
+
+**Qualitative Report:** Over the course of the month I noticed increased soreness in my calves at first, and then a general sense of tiredness towards the end of the month. This, however, was accopanied by a feeling of being much stronger as a runner. The latter point was most noticable in the in two areas, while running: posture and muscle-group engagement. My notes indicate an increased desire and ability to 'run tall', which I suspect was, in part, a psychological response to feeling tired. I also noted (and mentioned in the last post) an increased sense of wanting to run with my glutes and hamstrings. The two - posture and muscles - likely relate, and I suspect that to keep going on such a streak I had to more consciously engage large muscles. I certainly notice my running form has less 'shuffle' now than I remember from before. 
+
+By the end of the month, which included a road-trip to Melbourne for Christmas with my family, I felt that I was a more economical runner. I felt I could run farther and faster with similar effort.
+
+**Quantitative Summary:** Once again, the code from my post on  [getting data from Strava](https://www.dralexnorman.net/post/running-and-playing-with-r/) is what I'm using for this exploration. All the graphs are from the `filtered_runs` object from that script, and, for the purposes of exploration, I have used a date-rage of 29/11-02/01.
+
+In that 35-day range I ran 36 times, with a minimum distance of 656m and a maximum of 6.7km. I covered a distance of 107.25km in a total time of 727.6 minutes (just over 12hrs), for an average pace of 6:47/km. One run was really a jog/walk with the kids on Christmas Day. Here's a barplot of the runs:
+![]()
+
+But the real interest is in the running economy over that time. Using the formular from the same post above, here is a scatter plot of my running economy with a loess-smoothed conditional mean:
+![]()
+
+A small but clear increase in running economy appears to have occurred. 
