@@ -1,0 +1,77 @@
+---
+title: Running Economy Experiment - Results + follow-up
+author: Alex Norman
+date: '2018-02-17'
+slug: running-economy-experiment-results-follow-up
+categories:
+  - Finding Things Out
+tags:
+  - R
+  - running
+Draft: TRUE
+---
+
+
+
+<p>When I started running, the idea of doing so every day seemed… mad… dangerous. Now I can see its virtues, one of which is fitness (but I think fun is pretty important, too). Since late-November I have been running every day (as of 18/02/18 I’ve run for 82 consecutive days). My <a href="https://www.dralexnorman.net/post/a-streak-running-every-day-for-a-month/">last post</a> was an intro and half-way(ish) update on my <code>N=1</code> experiment on the effect of running every day for a month upon my ‘relative running economy’. In this post I will explore the data from that month plus look at the follow-up data.</p>
+<div id="the-december-running-streak-experiment" class="section level2">
+<h2>The December Running Streak Experiment</h2>
+<p><strong>Qualitative Report:</strong> Over the course of the month I noticed increased soreness in my calves at first, and then a general sense of tiredness towards the end of the month. This, however, was accopanied by a feeling of being much stronger as a runner. The latter point was most noticable in the in two areas, while running: posture and muscle-group engagement. My notes indicate an increased desire and ability to ‘run tall’, which I suspect was, in part, a psychological response to feeling tired. I also noted (and mentioned in the last post) an increased sense of wanting to run with my glutes and hamstrings. The two - posture and muscles - likely relate, and I suspect that to keep going on such a streak I had to more consciously engage large muscles. I certainly notice my running form has less ‘shuffle’ now than I remember from before.</p>
+<p>By the end of the month, which included a road-trip to Melbourne for Christmas with my family, I felt that I was a more economical runner. I felt I could run farther and faster with similar effort.</p>
+<p><strong>Quantitative Summary:</strong> Once again, the code from my post on <a href="https://www.dralexnorman.net/post/running-and-playing-with-r/">getting data from Strava</a> is what I’m using for this exploration. All the graphs are from the <code>filtered_runs</code> object from that script, and, for the purposes of exploration, I have used a date-range of 29/11-02/01.</p>
+<p>In that 35-day range I ran 36 times, with a minimum distance of 656m and a maximum of 6.7km. I covered a distance of 107.25km in a total time of 727.6 minutes (just over 12hrs), for an average pace of 6:47/km. One run was really a jog/walk with the kids on Christmas Day. But the real interest is in the running economy over that time. Using the formular from the same post above, here is a scatter plot of my running economy with a loess-smoothed conditional mean: <img src="/img/dec_running_economy.jpeg" /></p>
+<p>A small but clear increase in running economy appears to have occurred. Yay!</p>
+<p>As I mentioned in the previous post, I suspect the brevity of the short (~1km) runs, was warping the data. So, here they are split by ‘short’ (&lt;3km) and ‘medium’ (&lt;8km) length. <img src="/img/dec_med-long_running_economy.jpeg" /></p>
+<p>What was unexpected was the slight downwards trend in the short runs, though I suspect that has to do with Christmas Day (walk/running with the kids) and the final two runs which were done during the trip back to Sydney from Melbourne.</p>
+<p><strong>Conclusions:</strong> Both qualitative reports and quantitative data suggest relative running economy improved over the course of the month. There were no dietary changes or other forms of exercise to explain this, and no injuries or lingering soreness. One important factor, however, may be stress. I went on annual leave on 18 December, and immediately felt much more relaxed and more energised. It may be that stress plays a role of some kind in running economy. Something worth pursuing in order to determine (a simple stress scale may give some useful data).</p>
+</div>
+<div id="post-2017-the-2018-running-streak" class="section level2">
+<h2>Post-2017: The 2018 Running Streak?</h2>
+<p>Since the new year I have continued to run every day. As the graph below shows, the slight upwards trend in running economy continues. What I find interesting at the moment, however, is the functions of time of day and total distance on the running economy metric. So, I added two factor types to the <code>filtered_runs</code> object to test them.</p>
+<p>For example, separating morning, day, and evening runs like so:</p>
+<pre class="r"><code># Add a variable to describe the time of day: morning, day, or evening
+morning &lt;- &quot;11:00:00&quot;
+evening &lt;- &quot;18:00:00&quot;
+filtered_runs &lt;- mutate(filtered_runs, 
+                        time_of_day = ifelse(
+                          format(with_tz(ymd_hms(
+                            start_date), &quot;Australia/Sydney&quot;), &#39;%H:%M:%S&#39;) &lt; morning, 
+                          &quot;morning&quot;, 
+                          ifelse(format(with_tz(ymd_hms(
+                            start_date), &quot;Australia/Sydney&quot;), &#39;%H:%M:%S&#39;) &gt; evening, 
+                            &quot;evening&quot;, &quot;day&quot;)))
+
+# Make a plot of the economy data by time of day
+ggplot(filtered_runs, aes(x = start_date_local, y = economy, colour = distance)) +
+  geom_point(size = 2) +
+  geom_smooth(method = &quot;lm&quot;) +
+  facet_wrap(~ factor(time_of_day, levels = c(&quot;morning&quot;, &quot;day&quot;, &quot;evening&quot;))) +
+  xlab(&quot;Date&quot;) + ylab(&quot;Economy&quot;) + 
+  ggtitle(&quot;Relative Running Economy&quot;)</code></pre>
+<p>Gives us this, with clear upwards trends in the morning and day time, but a decline in the evenings: <img src="/img/18Feb_timeofday_economy.jpeg" /></p>
+<p>I suspect the evening decline has to do with returning to work, and having to find the energy to run after 8-10hrs in the office.</p>
+<p>Things are similarly intriguing with the distance factor. With the total distance run separated into short, medium, and long runs:</p>
+<pre class="r"><code># Add a variable for the type of run in terms of disance (short, medium, long)
+filtered_runs &lt;- mutate(filtered_runs, run_type = ifelse(distance &lt; 3, &quot;short&quot;,
+                                        ifelse(distance &gt;= 3 &amp; distance &lt; 8, 
+                                               &quot;medium&quot;, &quot;long&quot;)))
+
+# Make a plot of the economy data by run length
+ggplot(filtered_runs, aes(x = start_date_local, y = economy, colour = distance)) +
+  geom_point(size = 2) +
+  geom_smooth(method = &quot;lm&quot;) +
+  facet_wrap(~ factor(run_type, levels = c(&quot;short&quot;, &quot;medium&quot;, &quot;long&quot;))) +
+  xlab(&quot;Date&quot;) + ylab(&quot;Economy&quot;) + 
+  ggtitle(&quot;Relative Running Economy&quot;)</code></pre>
+<p>We get this neat little indication of running economy improvement across all three distance factors over time: <img src="/img/18Feb_runtype_economy.jpeg" /></p>
+<p>Big improvements in medium and long distance running economy, but minimal improvement at short distance. Again, I think this is largely a function of the unreliability of the running economy metric over short distances from a cold start. Half the run is over by the time my heart rate gets up to average, giving a falsely high running economy measure.</p>
+<p>In fact, check out this graph showing running economy by distance:</p>
+<pre class="r"><code># Graph running economy by distance
+ggplot(filtered_runs, aes(x = distance, y = economy)) +
+  geom_point(size = 2) +
+  geom_smooth(method = &quot;lm&quot;) +
+  xlab(&quot;Distance&quot;) + ylab(&quot;Economy&quot;) + 
+  ggtitle(&quot;Relative Running Economy and Distance&quot;)</code></pre>
+<p><img src="/img/18Feb_distance_economy.jpeg" /> Something that seems clear is that the relative economy difference between mid-length and long runs is not that much, but that short runs are much more economical (non-linearity). This strikes me as a function of warming up. By about 3-4km, I’m warmed up and my economy is pretty stable. But… something for future analysis.</p>
+<p>So, the overall summary. This was fun! I like the old <code>N=1</code> exploratory experiment format. It’s good for idea generation. For instance, I could see an experiment with ‘training as usual’, active control (running coaching), strength training, and streak running experimental groups to test the relative effectiveness of streak trainng on running economy. Plus, for me, personally, I’ve learned quite a bit about <code>ggplot2</code> in the process. I’m also a lot fitter and lighter (by about 5%), and a better runner. Winning all round.</p>
+</div>
