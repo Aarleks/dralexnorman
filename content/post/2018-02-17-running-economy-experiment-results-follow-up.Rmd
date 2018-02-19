@@ -19,7 +19,7 @@ By the end of the month, which included a road-trip to Melbourne for Christmas w
 
 **Quantitative Summary:** Once again, the code from my post on  [getting data from Strava](https://www.dralexnorman.net/post/running-and-playing-with-r/) is what I'm using for this exploration. All the graphs are from the `filtered_runs` object from that script, and, for the purposes of exploration, I have used a date-range of 29/11-02/01.
 
-In that 35-day range I ran 36 times, with a minimum distance of 656m and a maximum of 6.7km. I covered a distance of 107.25km in a total time of 727.6 minutes (just over 12hrs), for an average pace of 6:47/km. One run was really a jog/walk with the kids on Christmas Day. But the real interest is in the running economy over that time. Using the formular from the same post above, here is a scatter plot of my running economy with a loess-smoothed conditional mean:
+In that 35-day range I ran 36 times, with a minimum distance of 656m and a maximum of 6.7km. I covered a distance of 107.25km in a total time of 727.6 minutes (just over 12hrs), for an average pace of 6:47/km. One run was really a jog/walk with the kids on Christmas Day. But the real interest is in the running economy over that time. Using the formula from the same post above, here is a scatter plot of my running economy with a loess-smoothed conditional mean:
 ![](/img/dec_running_economy.jpeg)
 
 A small but clear increase in running economy appears to have occurred. Yay!
