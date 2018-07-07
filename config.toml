@@ -81,7 +81,7 @@ defaultContentLanguageInSubdir = false
   #   https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/#highlighting-options
   highlight = true
   highlight_languages = ["r", "python", "arduino", "vim"]
-  highlight_style = "monokai"
+  highlight_style = "solarized-dark"
   highlight_version = "9.9.0"
 
   # Enable native social sharing buttons?
@@ -140,7 +140,7 @@ defaultContentLanguageInSubdir = false
     icon = "google-scholar"
     icon_pack = "ai"
     link = "https://scholar.google.com.au/citations?user=FN3ytOYAAAAJ&hl"
-    
+
   [[params.social]]
     icon = "osf"
     icon_pack = "ai"
@@ -150,7 +150,7 @@ defaultContentLanguageInSubdir = false
     icon = "orcid"
     icon_pack = "ai"
     link = "https://orcid.org/0000-0002-5043-7310"
-    
+
     [[params.social]]
     icon = "mendeley"
     icon_pack = "ai"
@@ -160,7 +160,7 @@ defaultContentLanguageInSubdir = false
     icon = "github"
     icon_pack = "fa"
     link = "//github.com/Aarleks"
-    
+
   [[params.social]]
     icon = "researchgate"
     icon_pack = "ai"
