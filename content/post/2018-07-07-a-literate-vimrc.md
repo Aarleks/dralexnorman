@@ -44,17 +44,26 @@ The bulk of my work in Vim is writing prose, mainly academic articles and blogpo
 First of all we want to set Vim up so that it behaves nicely and loads the plugins we have put into our autoload folder. To begin, call Pathogen, which will load up plugins. After that, we set some basics that will make Vim behave nicely. Vim's default mode won't allow many plugins to work, so setting `nocompatible` makes Vim behave like a modern program. After this, we get Vim to recognise and format text according to the type of file, and the turn on relative line numbers. Finally, sensible linebreaks and a deafult to split buffers to the right.
 
 ```vim
+:let mapleader = ","
 execute pathogen#infect()
 execute pathogen#helptags()
 
 set nocompatible
-filetype plugin on
+filetype plugin indent on
 syntax on
 set encoding=utf-8
 set number
 set relativenumber
 set wrap
+set vb
 set linebreak
+set cursorline
+set mousehide
+
+" GUI options for when that's appropriate
+set guioptions-=T
+set guioptions-=m
+set guifont=Consolas:h12
 
 set splitbelow
 set splitright
