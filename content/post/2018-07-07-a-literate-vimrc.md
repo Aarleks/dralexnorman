@@ -61,6 +61,7 @@ set cursorline
 set mousehide
 
 " GUI options for when that's appropriate
+colorscheme solarized
 set guioptions-=T
 set guioptions-=m
 set guifont=Consolas:h12
