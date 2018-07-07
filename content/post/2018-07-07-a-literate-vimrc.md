@@ -16,7 +16,7 @@ output:
     toc: true
     number_sections: true
     toc_depth: 3
-draft: true
+draft: false
 
 ---
 
