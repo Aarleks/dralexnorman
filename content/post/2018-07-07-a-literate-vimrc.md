@@ -97,9 +97,9 @@ By default, Vim comments out new lines. This command stops that.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 ```
 
-#### NAvigation with guides
+#### Navigation with guides
 
-This took me *ages* to figure out. I ekpt seeing `<++>` in a some files and couldn't figure out what they were for. Yet again, Luke Smith's guidance helped. They are just markers one can leave in order to indicate `put some text here`. Handy!
+This took me *ages* to figure out. I kept seeing `<++>` in a some files and couldn't figure out what they were for. Yet again, Luke Smith's guidance helped. They are just markers one can leave in order to indicate `put some text here`. Handy!
 
 These commands allow you to jump to the next 'guide', delete it, and throw you into `Insert` mode.
 
