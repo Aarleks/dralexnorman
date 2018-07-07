@@ -1,7 +1,7 @@
 ---
 title: An Attempt at a Literate Vimrc File
 author: Alex Norman
-date: '2018-06-19'
+date: '2018-07-06'
 slug: a-literate-vimrc-file
 categories:
   - software
