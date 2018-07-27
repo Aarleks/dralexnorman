@@ -64,7 +64,7 @@ set mousehide
 colorscheme solarized
 set guioptions-=T
 set guioptions-=m
-set guifont=Consolas:h12
+set guifont=Inconsolata:h12
 
 set splitbelow
 set splitright
