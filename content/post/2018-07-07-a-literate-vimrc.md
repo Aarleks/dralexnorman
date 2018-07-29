@@ -61,10 +61,11 @@ set cursorline
 set mousehide
 
 " GUI options for when that's appropriate
+set background=dark
 colorscheme solarized
 set guioptions-=T
 set guioptions-=m
-set guifont=Inconsolata:h12
+set guifont=Monaco:h16
 
 set splitbelow
 set splitright
