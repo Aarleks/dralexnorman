@@ -1,16 +1,16 @@
 ---
-title: An Attempt at a Literate Vimrc File
-author: Alex Norman
+title: an attempt at a literate vimrc file
+author: alex norman
 date: '2018-07-06'
 slug: a-literate-vimrc-file
 categories:
   - software
   - programming
 tags:
-  - Vim
+  - vim
   - literate programming
   - plain text writing
-summary: In which, for no good reason, I make my .vimrc file into a markdown-based blogpost that Vim reads upon startup.
+summary: in which, for no good reason, i make my .vimrc file into a markdown-based blogpost that vim reads upon startup.
 output:
   blogdown::htmlpage:
     toc: true
@@ -59,13 +59,25 @@ set vb
 set linebreak
 set cursorline
 set mousehide
+:set laststatus=2
+set statusline=%t%m%r%h%w%=\ %Y\ %l,%v\ %p%%\ [%L]
 
 " GUI options for when that's appropriate
 set background=dark
 colorscheme solarized
 set guioptions-=T
+set guioptions-=r
 set guioptions-=m
-set guifont=Monaco:h16
+" set guifont=Monaco:h16
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_macvim")
+    set guifont=Monaco:h16
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
 
 set splitbelow
 set splitright
