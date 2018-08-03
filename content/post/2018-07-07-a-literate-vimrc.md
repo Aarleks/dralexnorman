@@ -1,5 +1,5 @@
 ---
-title: an attempt at a literate vimrc file
+title: An Attempt at a Literate vimrc File
 author: alex norman
 date: '2018-07-06'
 slug: a-literate-vimrc-file
