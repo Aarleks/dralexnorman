@@ -35,8 +35,8 @@ weight = 1
 
 # About me
 
-My name is Alex Norman. I am a senior lecturer Western Sydney University where my primary role is directing the [Master of Research](https://www.westernsydney.edu.au/graduate_research_school/grs/courses/master_of_research) programme and teaching its core units on the sociology of research and on public audience writing.  
+My name is Alex Norman. I am a senior lecturer at Western Sydney University where my primary role is directing the [Master of Research](https://www.westernsydney.edu.au/graduate_research_school/grs/courses/master_of_research) programme and teaching its core units on the sociology of research and on public audience writing.  
 
 My principal research interest is the constellation of meaning, purpose, and identity related to acts of travel. In other words, I'm interested in why people travel and how doing so affects their sense of who they are. My research often looks at phenomena that are classified as 'religious', and I have an ongoing fascination with contemplative practices particularly where people use them as practices of re-creation and re-callibration. In addition to this, teaching the MRes has ignited a research interest in research as a thing humans do.
 
-Recently, I've developed a love of prgramming for research and teaching. I'm working with [R](https://www.r-project.org/) and am learning [Python](https://www.python.org/), and I'm dabbling elsewhere.
+Recently, I've developed a love of prgramming for research and teaching. I'm working with [R](https://www.r-project.org/), I've moved over to [Linux](https://www.archlinux.org/), and I'm a keen [Vim](https://www.vim.org/) learner, plus I'm dabbling elsewhere.
