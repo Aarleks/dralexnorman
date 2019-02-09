@@ -35,7 +35,7 @@ There are also pragmatic professional reasons. Like so many other early career a
 
 But I also see blogging as a learning tool which I have neglected too long since my last attempt. Blogging as a form of social media forces the blogger to practice certain skills; notably communication. The skill of being able to explain requires practice in the arts of deep critical thinking, reflexive awareness, and articulation. This is a core skill set for the academy, but it strikes me that without teaching or frequent publication academics can be in danger of getting out of practice with these skills. A certain, but crucial, element of this skill set and the practice thereof lies in the reflections of our actions of communication from others; our readers. We need to be able to 'see' others digest our work. What has been lacking for me recently, as an observer, a thinker, a writer, a teacher, is a source of reflexivity and feedback. Peer review publication is too slow, and the self too mediated by supposedly well-meaning peers and editors to be of use. What results is frequently a heavily directed performance for a very specific audience (sometimes numbering in the dozens!).
 
-![](http://i.imgur.com/JqYTmjn.gif)
+![](https://i.imgur.com/JqYTmjn.gif)
 
 A distinct advantage of blogging, therefore, as I see it for me now, is the kind of context collapse that opened this post. The terrible self-awareness of an unknown and infinite audience causes one to be, as Goffman put it, "out of face" and unable to size up the context of the scene. In that moment, anyone, everyone, and no one are the audience simultaneously. With no "line" to speak (Goffman again) one is forced to make something up and act 'in relation' to a generalised other.
 
