@@ -1,0 +1,228 @@
+---
+title: "Reflective Writing"
+subtitle: "**Describe | Analyse | Think**"
+author: "Dr Alex Norman"
+date: "26-02-2019"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+class: center, middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+solarized_light(
+  #text_font_size = "25px",
+  #header_h1_font_size = "55px",
+  #header_h2_font_size = "45px",
+  #header_h3_font_size = "35px",
+  footnote_font_size = "0.5em",
+  code_font_family = "Fira Code",
+  text_font_google   = google_font("Work Sans", "300", "300i"),
+  code_font_url    = "https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css"
+)
+```
+
+Let's start with a basic assumpion
+
+--
+
+## The products of research do not accurately reflect the process
+
+---
+class: center, middle
+
+
+## Research is finding things out
+
+---
+class: center, middle
+
+# World
+
+---
+class: center, middle
+
+# Think    -->   World
+
+--
+
+### This means we need to think about things.
+
+---
+class: center, middle
+
+# But thoughts are ephemeral
+
+--
+
+## we need to record them
+
+---
+class:
+
+### A second assumption
+
+# Writing is Modal
+
+--
+
+<br>
+### In the world of research there are at least five modes: 
+1. Freewriting 
+1. Writing to think
+1. Writing for formal publication
+1. Writing to propose research
+1. Writing to spread knowledge
+
+---
+
+<br>
+**Major Takehome**
+
+--
+
+<br>
+### We don't write up our research when it's done
+
+<br>
+## We write as we research
+
+--
+
+<br>
+# Resarch **is** Writing!
+
+---
+class: inverse, center, middle
+
+# **Reflective writing**
+
+## [A thought-capture tool for researchers](https://www.youtube.com/watch?v=opqIa5Jiwuw)
+
+
+---
+class:
+
+# What?
+
+--
+
+#### Reflective Writing
+
+A way of paying attention to thinking, beliefs, and assumptions so you can understand what you know, what you don't, and why.
+
+
+--
+
+- More than notes to self
+
+--
+
+- Rather, a deliberately structured critical writing practice
+
+--
+
+- A simple, reliable system of recording thinking about the world
+
+---
+class: 
+
+# Why?
+
+Three main reasons:
+
+
+--
+
+1. Any writing is worthwhile in a research context;
+
+--
+
+1. To understand ourselves in the process of our work - how do we think?;
+
+--
+
+1. To externalise our thinking, with a record of the context, so that we may easily return to our thinking later
+
+--
+
+<br>
+*Alternately:*
+* The world is far more complex that it first appears
+* We need a radical **increase** in our **cognitive power** to figure it out
+---
+class:
+
+# How?
+
+Three basic steps to effective reflective writing practice.
+
+--
+
+1. Describe - What, when, who?
+
+--
+
+1. Analyse - How, why?
+
+--
+
+1. Reflect - What if, what about, what does this mean or imply?
+
+---
+class:
+
+# A Simple, Reliable Process
+
+###**Description** 
+What is the concept, idea or theory you are reflecting on?
+###**Analysis**
+Past-looking: Are there aspects you found particularly interesting or challenging? Does it tie in with anything you have learned in the past? Has it changed the way you think, or affirmed something you already knew?
+###**Reflection** 
+Future-looking: What else might you need to find out? Do you have any questions? What other theories/methods/ideas/findings might it connect with? How might you incorporate or apply these ideas in the future? What might it change in your learning/research?
+
+---
+class: inverse, middle, center
+
+# Add Power to Your Reflective Work
+
+.center-column[
+Returning to your reflective writing and reflecting again upon your former thinking is a *great* way to embed learning.
+]
+
+---
+
+# Resources
+
+Monash Uni, ['Reflective Writing in Education'](https://www.monash.edu/rlo/assignment-samples/education/education-reflective-writing)
+
+UNSW, ['Reflective Writing'](https://student.unsw.edu.au/reflective-writing)
+
+
+
+---
+class: center, middle, inverse
+
+# Thanks!
+
+**Contact Details**
+
+[`r icon::fa("paper-plane")` a.norman@westernsydney.edu.au](mailto:a.norman@westernsydney.edu.au)
+
+[`r icon::fa("link")` www.dralexnorman.net](https://www.dralexnorman.net)
+
+[`r icon::fa("twitter")` @Aarleks](https://twitter.com/Aarleks)
+
+[`r icon::fa("github")` @Aarleks](https://github.com/Aarleks)
+
+  Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan)
