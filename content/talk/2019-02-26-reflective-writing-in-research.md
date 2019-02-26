@@ -13,8 +13,7 @@ categories:
 tags:
   - Reflective Writing
   - Research
-url_slides:
- - "https://www.dralexnorman.net/slides/relflecive_wrinting_presentation"
+url_slides: "https://www.dralexnorman.net/slides/relflecive_wrinting_presentation#1"
 header:
   caption: ''
   image: ''
