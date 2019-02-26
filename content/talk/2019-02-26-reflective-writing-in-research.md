@@ -14,7 +14,7 @@ tags:
   - Reflective Writing
   - Research
 url_slides:
- - https://www.dralexnorman.net/slides/relflecive_wrinting_presentation
+ - "https://www.dralexnorman.net/slides/relflecive_wrinting_presentation"
 header:
   caption: ''
   image: ''
