@@ -14,7 +14,7 @@ tags:
   - Qualitative
   - dataviz
   - Research
-url_slides: "https://www.dralexnorman.net/slides/Abstract_Writing/qual-dataviz/visualising_qual_analysis.html#1"
+url_slides: "https://www.dralexnorman.net/slides/qual-dataviz/visualising_qual_analysis.html#1"
 header:
   caption: ''
   image: ''
