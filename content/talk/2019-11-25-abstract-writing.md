@@ -13,7 +13,7 @@ categories:
 tags:
   - Abstract Writing
   - Research
-url_slides: "https://www.dralexnorman.net/slides/Abstract_Writing/Reflective_Writing/Abstract_Writing#1"
+url_slides: "https://www.dralexnorman.net/slides/Abstract_Writing/Abstract_Writing#1"
 header:
   caption: ''
   image: ''
