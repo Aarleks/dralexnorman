@@ -1,5 +1,5 @@
 ---
-title: Abstract Writing
+title: Visualising Qualitative Analysis
 author: Alex Norman
 date: '2019-11-28'
 event: "TASA Conference"
