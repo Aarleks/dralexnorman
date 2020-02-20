@@ -11,15 +11,15 @@ tags:
 Draft: FALSE
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>My last post was inspired by my desire to pick up my running game, which had waned this year thanks largely to a heavy work schedule. Looking at my relative economy inspired me to do a little experiment. In the recreational running world, running every day is known as a ‘streak’. The online magazine, Runner’s World has a yearly <a href="https://www.runnersworld.com/rwrunstreak">Thanksgiving-to-New-Year’s-Day streak</a>, and there are regularly stories published about runners going on decades-long streaks, and the <a href="https://www.reddit.com/r/running/">r/running subreddit</a> often has tales of people on multi-year streaks. Until this month, I’d never run more than 4 days in a row. Always one to look for a distracting project for curiosity’s sake, I came up with the following question: Would my relative running economy be affected by running every day for a month?</p>
 <p>To recap, relative running economy is, essentially, a number that relates how many heartbeats it took to move a certain distance. Economy improves by having fewer heartbeats per distance, i.e. less ‘work’ per distance.</p>
 <p>My hypothesis is that both running-specific strength and cardio fitness relate to frequency of running (amongst other things).</p>
 <p>My prediction: as economy is a function of cario fitness and running-specific strength, my running economy will be higher at the end of 33 consecutive days of running (my running streak started on 29 November). So, I give to you:</p>
-<div id="the-december-running-streak" class="section level2">
-<h2>The December Running Streak</h2>
-<p>Aim: Run every day in December to measure relative running economy.<br />
+<p>##The December Running Streak
+Aim: Run every day in December to measure relative running economy.<br />
 Purpose: To see if my running economy is affected by running every day.</p>
 <p><strong>The Rules:</strong></p>
 <ol style="list-style-type: decimal">
@@ -31,31 +31,27 @@ Purpose: To see if my running economy is affected by running every day.</p>
 <li>No additional cardio training for the month</li>
 </ol>
 <p>As of today, 22 December, 2017, I am two thirds through the experiement, so this is an intro + checkin post.</p>
-<div id="dec-22-checkin" class="section level3">
-<h3>Dec 22 Checkin</h3>
+<p>###Dec 22 Checkin</p>
 <p><strong>Qualitative Report:</strong> The first 10 days were easy. Much easier than I expected, actually. I think opting for a low minimum distance helped. The first thing I noticed, around day 12 or 13, was some mild tightness in my calf muscles and a slightly stiff right foot arch. This seemed to disappear by around day 21.</p>
 <p>The other observation of note is that my short-distance speed seems to have increased rapidly. Indeed, I began to have a hard time keeping myself from running too hard and have either come close to or actually set some pbs without meaning to. In terms of my experience of running, this appears to be connected with a sensation of much greater glute and hamstring strength; I feel like I engage those muscles much more when I run at the moment. As a side note, this seems to lower my cadence slightly from around 190 to 185.</p>
 <p>Constant sensation of ‘having run yesterday’ (duh…), but am busting to do a proper long run (more than 1hr).</p>
 <p><strong>Quantitative Summary:</strong> Using the code from my <a href="https://www.dralexnorman.net/post/running-and-playing-with-r/">previous post</a>, we can have a look at what my running economy is doing.</p>
 <p>Let’s look at the numbers first:<br />
 I’ve done 25 runs in 24 days (one day was to and from the shops), with a minimum distance of 656m (although that was immediately after a 1.3km run) and a maximum of 6.7km. Pretty short, overall, but having never been on a streak before I’m taking it easy.</p>
-<p>I’ve run 79km in 536 minutes, making my average pace about 6.8min/km. Here’s a barplot with date and distances to show how the streak has run. The data are from the <code>filtered_runs</code> object created using the script from the previous post:</p>
+<p>I’ve run 79km in 536 minutes, making my average pace about 6.8min/km.
+Here’s a barplot with date and distances to show how the streak has run. The data are from the <code>filtered_runs</code> object created using the script from the previous post:</p>
 <pre class="r"><code>ggplot(filtered_runs, aes(x = start_date_local, y = distance)) + 
   geom_bar(stat = &quot;identity&quot;, fill = &quot;blue&quot;) +
   xlab(&quot;Date&quot;) + ylab(&quot;Distance&quot;) +
   ggtitle(&quot;Distance per Day&quot;)</code></pre>
-<p><img src="/img/22nd_distance.jpeg" /> For the longer runs you can see a sight upwards trend (longer distance). This is interesting because 7 of the 9 were exactly the same ‘workout’ on my watch: 45mins @&lt;150bpm heartrate. This means I’m running further in the same time for roughly the same heart work.</p>
+<p><img src="/img/22nd_distance.jpeg" />
+For the longer runs you can see a sight upwards trend (longer distance). This is interesting because 7 of the 9 were exactly the same ‘workout’ on my watch: 45mins @&lt;150bpm heartrate. This means I’m running further in the same time for roughly the same heart work.</p>
 <p>Ok, so let’s see a simplae scatter plot with economy over time, colour-shaded for distance.</p>
 <pre class="r"><code>ggplot(filtered_runs, aes(x = start_date_local, y = economy, colour = distance)) +
   geom_point(size = 2) +
   geom_smooth() +
   xlab(&quot;Date&quot;) + ylab(&quot;Economy&quot;) + 
   ggtitle(&quot;Relative Running Economy&quot;)</code></pre>
-<div class="figure">
-<img src="/img/22nd_economy.jpeg" />
-
-</div>
+<p><img src="/img/22nd_economy.jpeg" /></p>
 <p>All those lighter coloured points down low make it clear that there is a difference in economy between longer and shorter runs. I suspect this has to do with it taking about 2-3mins for my heartrate to come up to average (a 1km run takes me about 6mins), but I’ll explore that more at the end of the experiment.</p>
 <p>What’s also clear for now is that there is an upwards trend in economy. This appears to be the case for both shorter and longer runs. But again, more in the next post.</p>
-</div>
-</div>

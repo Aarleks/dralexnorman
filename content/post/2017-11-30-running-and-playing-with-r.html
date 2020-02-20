@@ -11,13 +11,15 @@ tags:
 Draft: FALSE
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>Lots of people record their movement when they go out for run/walk/swim/cycle, and subsequently upload those data to sites like <a href="https://www.strava.com">Strava</a> or <a href="https://www.endomondo.com">Endomondo</a>. While such sites often provide useful and interesting assessments of one’s records and <a href="https://blog.strava.com/analyze-your-fitness-with-heart-rate-data-13178/">‘fitness’</a>, there is usually little possibility for besopke analyses. By using APIs and R, it is possible to examine one’s data and do some cool analyses and visualisations.</p>
 <p>I’ve been running on and off for about 3 years now. I used to hate it. But a few years ago while running around parks chasing my kids I began to think it was… fun. When you’re not sprinting all out, running turns out to be as enjoyable as walking! This discovery occurred during a period of high work stress for me, combined with long chair-bound days. So, I took up running both for fitness and stress relief. I think it worked, and it certainly coincided with feeling better.</p>
-<p>It also coincided with some pleasant geeking out at the tracking one could do. I found I liked tracking my runs so I could see where I went (even though I knew that), how long it took (knew that, too), and how fast I was going (easy enough to work out, given the other two factors). As someone who loves staring at maps to plot future routes and go over old journeys, I was pretty easily sold on the whole GPS watch thing.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>It also coincided with some pleasant geeking out at the tracking one could do. I found I liked tracking my runs so I could see where I went (even though I knew that), how long it took (knew that, too), and how fast I was going (easy enough to work out, given the other two factors). As someone who loves staring at maps to plot future routes and go over old journeys, I was pretty easily sold on the whole
+GPS watch thing.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>Being an R newbie I also realised that the data might be interesting to play with for learning both about R and about myself. The standard numbers given on sites like Strava are fine, but sometimes I want some kind of measure of my running workload relative to past efforts. Fast forward three years and I figured it was finally time to have a play with my running data in R.</p>
-<p>In my internet running meanderings, I came across Jonathan Savage’s website, <a href="http://fellrnr.com/wiki/Main_Page">Fellrnr.com</a>. It’s awesome, and there’s a lot of great information there. What caught my eye, however, was the construct of ‘running economy’: an estimation of “how far and fast you can run with a given amount of energy”.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> But it was Savage’s pitch for <a href="http://fellrnr.com/wiki/Relative_Running_Economy">‘relative running economy’</a> as a metric that everyday runners could figure for themselves that peaked my R interest. For one, it is something one can calculate from tracker data, and for two, it makes some intuitive sense as a calculation of effort. Relative running economy is a number based on heartbeats per distance. As long as you’re recording heartbeats, time, and distance (in this case via GPS), you can calculate your relative running economy.</p>
+<p>In my internet running meanderings, I came across Jonathan Savage’s website, <a href="http://fellrnr.com/wiki/Main_Page">Fellrnr.com</a>. It’s awesome, and there’s a lot of great information there. What caught my eye, however, was the construct of ‘running economy’: an estimation of “how far and fast you can run with a given amount of energy”.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> But it was Savage’s pitch for <a href="http://fellrnr.com/wiki/Relative_Running_Economy">‘relative running economy’</a> as a metric that everyday runners could figure for themselves that peaked my R interest. For one, it is something one can calculate from tracker data, and for two, it makes some intuitive sense as a calculation of effort. Relative running economy is a number based on heartbeats per distance. As long as you’re recording heartbeats, time, and distance (in this case via GPS), you can calculate your relative running economy.</p>
 <p>Now, it’s important to note that the number itself is meaningless on its own. Relative running economy numbers only carry meaning in relation to other relative running economy nubmers from the same person. Even then they should be read with caution. What it can show, however, is change in the amount of ‘work’ it takes to run over time.</p>
 <p>So, how do we figure relative running economy? Savage gives us this formular:</p>
 <p><code>Total Beats = (Average Heart Rate – Resting Heart Rate) * Time in Minutes</code><br />
@@ -78,15 +80,12 @@ ggplot2::ggplot(filtered_runs, aes(x = start_date_local, y = economy))+
   geom_smooth +
   xlab(&quot;Date&quot;) + ylab(&quot;Economy&quot;) + 
   ggtitle(&quot;Relative Running Economy&quot;)</code></pre>
-<div class="figure">
-<img src="/img/running_economy.jpeg" />
-
-</div>
+<p><img src="/img/running_economy.jpeg" /></p>
 <p>And there it is! Looks like I’m getting more economical as of early December. I’ll create a separate post about my December R-Running Project. In the meantime, if you’re interested, here is the <a href="https://gist.github.com/Aarleks/64f5146c7dfaa4f5475802e8c94ac5bd">complete gist</a>.</p>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>A story for another time is how this, via long and winding roads, led to an interest in mechanical watches, with which I am now obsessed.<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>For the references Savage uses to discuss running economy, scroll to the bottom of the page at; Jonathan Savage, ‘Running Economy’, Fellrnr.com, <a href="http://fellrnr.com/wiki/Running_Economy" class="uri">http://fellrnr.com/wiki/Running_Economy</a>.<a href="#fnref2">↩</a></p></li>
+<li id="fn1"><p>A story for another time is how this, via long and winding roads, led to an interest in mechanical watches, with which I am now obsessed.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>For the references Savage uses to discuss running economy, scroll to the bottom of the page at; Jonathan Savage, ‘Running Economy’, Fellrnr.com, <a href="http://fellrnr.com/wiki/Running_Economy" class="uri">http://fellrnr.com/wiki/Running_Economy</a>.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>

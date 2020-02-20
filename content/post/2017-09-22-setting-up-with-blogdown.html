@@ -19,6 +19,7 @@ output:
     toc_depth: 1
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
@@ -32,14 +33,16 @@ output:
 
 <p>When I decided to make the effort to get back into maintaining my website/blog I knew one of the things that would help was better engagement with the building of the site itself. WordPress is excellent for building websites of many kinds, but I felt a sense of only having partial understanding and control which led, I think, to something of a lack of engagement. I also disliked that I had to login to do anything (in reality I didn’t) and that everything was a lot more complicated than it needed to be (it really wasn’t).</p>
 <p>While doing some professional procrastination looking into <span class="math inline">\(\rm \LaTeX\)</span> and plain text document production, I came across <code>bookdown</code> and then immediately discovered it’s sibling, the R package <code>blogdown</code>. I knew right away this was what I needed. Here was a website building platform that was all plain text. Blogdown uses <code>Markdown</code> and <code>RMarkdown</code> for content. Now that I had found it I knew it was exactly what I was looking for; <code>R + blog = commitment</code> (hopefully). Because I found the setup guides I read so helpful, and because I figured creating a recording of my choices may be useful, I decided to write this basic setup post.</p>
-<p>{{% alert note %}} My methods and choices might not suit you. Likewise, my knowledge is incomplete. If you want to set up your own site, make sure you read the appropriate documentation before you begin. {{% /alert %}}</p>
-<div id="setup" class="section level1">
+<p>{{% alert note %}}
+My methods and choices might not suit you. Likewise, my knowledge is incomplete. If you want to set up your own site, make sure you read the appropriate documentation before you begin.
+{{% /alert %}}</p>
+<div id="setup" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Setup</h1>
-<p>After deciding to use <code>blogdown</code>, the first thing I did was read the <a href="https://bookdown.org/yihui/blogdown/">blogdown book</a>. The book was written by the author of the package,<a href="https://yihui.name/">Yihui Xie</a>, and two co-authors; <a href="https://proquestionasker.github.io/">Amber Thomas</a><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> and <a href="https://apreshill.rbind.io/">Alison Presmanes Hill</a>. The language is simple and the text easy to follow, and it’s a comprehensive guide to getting started with the <code>blogdown</code> package to build a website with <a href="https://gohugo.io/">Hugo</a>. My advice would be to follow most, if not all of the recommendations the authors make.</p>
-<p>With blogdown installed - <code>install.packages(&quot;blogdown&quot;)</code> - it’s easy enough to simply get going and have a functional website ready to host in minutes. From here I followed Alison Presmanes Hill’s <a href="https://apreshill.rbind.io/post/up-and-running-with-blogdown/">walkthrough</a>. Her post covers it all pretty well, so head over for more details.</p>
+<p>After deciding to use <code>blogdown</code>, the first thing I did was read the <a href="https://bookdown.org/yihui/blogdown/">blogdown book</a>. The book was written by the author of the package,<a href="https://yihui.name/">Yihui Xie</a>, and two co-authors; <a href="https://proquestionasker.github.io/">Amber Thomas</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> and <a href="https://apreshill.rbind.io/">Alison Presmanes Hill</a>. The language is simple and the text easy to follow, and it’s a comprehensive guide to getting started with the <code>blogdown</code> package to build a website with <a href="https://gohugo.io/">Hugo</a>. My advice would be to follow most, if not all of the recommendations the authors make.</p>
+<p>With blogdown installed - <code>install.packages("blogdown")</code> - it’s easy enough to simply get going and have a functional website ready to host in minutes. From here I followed Alison Presmanes Hill’s <a href="https://apreshill.rbind.io/post/up-and-running-with-blogdown/">walkthrough</a>. Her post covers it all pretty well, so head over for more details.</p>
 <p>I decided to go with the hugo-academic theme, just like a billion other academics, it seems. I also really liked Alison Presmanes Hill’s <code>blue.css</code> look, so I <a href="https://github.com/rbind/apreshill/blob/master/static/css/blue.css">cloned that</a> and used it here (thanks Alison!).</p>
 </div>
-<div id="disqus-and-google-analytics" class="section level1">
+<div id="disqus-and-google-analytics" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Disqus and Google Analytics</h1>
 <p>Inside <code>config.toml</code> you can configure your Disqus and Google Analytics settings. Going to Google Analytics I realised I already had a blogspot (two, in fact) being tracked. Took some time to figure out how to get my tracking code. In the end:</p>
 <ul>
@@ -48,7 +51,7 @@ output:
 <li>Follow prompts from there. Easy enough. I already had a address to input, so it might be worth leaving this until you know where your site is going to be.</li>
 </ul>
 </div>
-<div id="building-content" class="section level1">
+<div id="building-content" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Building Content</h1>
 <p>Here was when I hit my first snag. When I first tried to serve the site locally using <code>blogdown::serve_site()</code> I got this error:</p>
 <blockquote>
@@ -62,14 +65,14 @@ Error in shell(cmd, mustWork = TRUE, intern = intern):<br />
 In addition: Warning messages:<br />
 1: running command ‘“C:.exe” -b /“/” # End your URL with a `/` trailing slash. -D -F -d “public” -t hugo-academic’ had status 65535<br />
 2: running command ‘“C:.exe” -b /“/” # End your URL with a `/` trailing slash. -D -F -d “public” -t hugo-academic’ had status 65535<br />
-3: running command ‘C:32.exe /c “C:.exe” -b /“/” # End your URL with a `/` trailing slash. -D -F -d “public” -t hugo-academic’ had status 1</p>
+3: running command ‘C:.exe /c “C:.exe” -b /“/” # End your URL with a `/` trailing slash. -D -F -d “public” -t hugo-academic’ had status 1</p>
 </blockquote>
 <p>The problem was it didn’t seem to have anything to do with my <code>config.toml</code> file, where I figured all the main command options were; I had already removed the uses of <code>#</code> and had put my web address (with <code>/</code>) in the <code>baseurl</code> option. Nonetheless, within 5mins of searching for possible causes, I experimented with simply pasting the following code into <code>config.toml</code>, and found the error ceased.</p>
 <pre><code>ignoreFiles = [&quot;\\.Rmd$&quot;, &quot;\\.Rmarkdown$&quot;, &quot;_files$&quot;, &quot;_cache$&quot;]</code></pre>
 <p>This is a recommended addition in the <a href="https://bookdown.org/yihui/blogdown/configuration.html#options">chapter on Hugo</a> in the blogdown book. Whether it’s the right thing to do is another matter; it worked.</p>
 <p>With that sorted I began building content and deleting the template placeholder material. Because it’s <code>R</code>, everything in every post is written in either <code>RMarkdown</code> or plain <code>Markdown</code>. It’s all very easy, and it’s a delight to use.</p>
 </div>
-<div id="learning-to-drive" class="section level1">
+<div id="learning-to-drive" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Learning to Drive</h1>
 <p>The ease of adding content is the thing I like most about about using blogdown. If I want to add a post to be blog (or any other part of the site, for that matter), I simply call the <code>blogdown::new_post()</code> function and begin typing in the <code>.md</code> or <code>.Rmd</code> file that is created. Once ready, use git bash to commit and push to GitHub, and that’s it. The post is live within seconds. What’s more, writing in Markdown is a breeze. See <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">here</a> for a guide.</p>
 <p>One of the important ‘value adds’ of <code>blogdown</code> is it’s incorporation of R code chunks, thanks to <code>RMarkdown</code> and the <code>knitr</code> package. So, for instance, if I wanted to show you some of my work in R here on the website I could simply type:</p>
@@ -78,25 +81,27 @@ ggplot(diamonds, aes(x = carat, y = price, colour = clarity)) +
   geom_point() +
   xlab(&quot;Carats&quot;) + ylab(&quot;Price&quot;) + 
   ggtitle(&quot;Diamonds&quot;)</code></pre>
-<p>But I can also just run the code here and produce the result for you: <img src="/post/2017-09-22-setting-up-with-blogdown_files/figure-html/unnamed-chunk-2-1.png" width="672" /> Cool, eh! This is a great feature not only for producing data viz content, but for operating in the spirit of reproducible research.</p>
+<p>But I can also just run the code here and produce the result for you:
+<img src="/post/2017-09-22-setting-up-with-blogdown_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+Cool, eh! This is a great feature not only for producing data viz content, but for operating in the spirit of reproducible research.</p>
 <p>While hunting around for tips and ideas I came across this site, by Yu Cheng <a href="https://fischcheng.github.io/2017/02/27/updated-hugo-academic-theme-to-sync-the-upstream-repo/" class="uri">https://fischcheng.github.io/2017/02/27/updated-hugo-academic-theme-to-sync-the-upstream-repo/</a> which demonstrates shortcodes for Twitter, Instagram, and YouTube content. Awesome! And, of course, that led me down a rabbit hole, which yielded the Hugo platform’s <a href="https://gohugo.io/content-management/shortcodes/">own page about shortcodes</a>.</p>
 <p>Interestingly, there are all sorts of hidden gems.</p>
 <p>A Twitter script:</p>
 <pre><code>{{&lt;tweet 907269861574930432&gt;}}</code></pre>
-<p>{{<tweet 907269861574930432>}}</p>
+<p>{{&lt;tweet 907269861574930432&gt;}}</p>
 <p>Wow!</p>
 <p>And YouTube videos, as well!</p>
 <pre><code>{{&lt;youtube _GkBzDQfoHg&gt;}}</code></pre>
-<p>{{<youtube _GkBzDQfoHg>}}</p>
+<p>{{&lt;youtube _GkBzDQfoHg&gt;}}</p>
 <p>And Instagram!</p>
 <pre><code>{{&lt;instagram BZBCJ2hFwuq&gt;}}</code></pre>
 <p>{{<instagram BZBCJ2hFwuq>}}</p>
 <p>OMG!! Gists! (which I found <a href="https://jabranham.com/blog/2016/12/analyzing-a-bib-file/">here</a>)</p>
 <pre><code>{{&lt;gist jabranham 887495eaf029680316fecb374f0723e0&gt;}}</code></pre>
-<p>{{<gist jabranham 887495eaf029680316fecb374f0723e0>}}</p>
+<p>{{&lt;gist jabranham 887495eaf029680316fecb374f0723e0&gt;}}</p>
 <p>One of the great things about <code>blogdown</code> is that if you see something cool in someone else’s site, you can simply head over to their GitHub repo for it and check out how they did it. No screwing around with installing widgets or trying to make addons play nicely. Just type (or <code>copy-paste</code>)</p>
 </div>
-<div id="pushing-to-netlify" class="section level1">
+<div id="pushing-to-netlify" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Pushing to Netlify</h1>
 <p>As I mentioned at the start, I had a WordPress blog with my own domain name hosted by Bluehost. I decided to go with the recommendation in the blogdown book, however, and deploy the site to <a href="https://www.netlify.com/">Netlify</a>. It’s free and, with a GitHub (or similar) repo properly set up, it’s easy. You simply connect your GitHub account to Netlify, then tell the latter which repo your blogdown site is in, and away you go. That process was also completely straightforward, and again I’ll refer you to Alison Presmanes Hill’s <a href="https://apreshill.rbind.io/post/up-and-running-with-blogdown/">walkthrough</a> for help.</p>
 <p>I will say, however, that I needed to use <code>hugo</code> for my build command, and <code>HUGO_VERSION</code> with <code>0.27</code> as my Build Environment variables. Apart from that, it was all quick and simple. Joy!</p>
@@ -104,6 +109,6 @@ ggplot(diamonds, aes(x = carat, y = price, colour = clarity)) +
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Amber’s site has some great examples of dataviz using <code>R</code>.<a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>Amber’s site has some great examples of dataviz using <code>R</code>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
