@@ -14,19 +14,19 @@ My last post was inspired by my desire to pick up my running game, which had wan
 
 To recap, relative running economy is, essentially, a number that relates how many heartbeats it took to move a certain distance. Economy improves by having fewer heartbeats per distance, i.e. less 'work' per distance.
 
-My hypothesis is that both running-specific strength and cardio fitness relate to frequency of running (amongst other things). 
+My hypothesis is that both running-specific strength and cardio fitness relate to frequency of running (amongst other things).
 
 My prediction: as economy is a function of cario fitness and running-specific strength, my running economy will be higher at the end of 33 consecutive days of running (my running streak started on 29 November). So, I give to you:
 
 ##The December Running Streak
-Aim: Run every day in December to measure relative running economy.  
+Aim: Run every day in December to measure relative running economy.
 Purpose: To see if my running economy is affected by running every day.
 
-**The Rules:**    
+**The Rules:**
 
 1. Must run every day in December
 1. Runs must be >1km and <10km (trying to avoid overstress)
-1. All runs longer than 2km must be at an easy effort (trying to avoid overstress) 
+1. All runs longer than 2km must be at an easy effort (trying to avoid overstress)
 1. Runs must be tracked with GPS and heartrate data, and uploaded to Strava
 1. Resting heartrate (measured upon waking) must be recorded every day
 1. No additional cardio training for the month
@@ -35,7 +35,7 @@ As of today, 22 December, 2017, I am two thirds through the experiement, so this
 
 ###Dec 22 Checkin
 
-**Qualitative Report:** The first 10 days were easy. Much easier than I expected, actually. I think opting for a low minimum distance helped. The first thing I noticed, around day 12 or 13, was some mild tightness in my calf muscles and a slightly stiff right foot arch. This seemed to disappear by around day 21. 
+**Qualitative Report:** The first 10 days were easy. Much easier than I expected, actually. I think opting for a low minimum distance helped. The first thing I noticed, around day 12 or 13, was some mild tightness in my calf muscles and a slightly stiff right foot arch. This seemed to disappear by around day 21.
 
 The other observation of note is that my short-distance speed seems to have increased rapidly. Indeed, I began to have a hard time keeping myself from running too hard and have either come close to or actually set some pbs without meaning to. In terms of my experience of running, this appears to be connected with a sensation of much greater glute and hamstring strength; I feel like I engage those muscles much more when I run at the moment. As a side note, this seems to lower my cadence slightly from around 190 to 185.
 
@@ -43,30 +43,30 @@ Constant sensation of 'having run yesterday' (duh...), but am busting to do a pr
 
 **Quantitative Summary:** Using the code from my [previous post](https://www.dralexnorman.net/post/running-and-playing-with-r/), we can have a look at what my running economy is doing.
 
-Let's look at the numbers first:  
+Let's look at the numbers first:
 I've done 25 runs in 24 days (one day was to and from the shops), with a minimum distance of 656m (although that was immediately after a 1.3km run) and a maximum of 6.7km. Pretty short, overall, but having never been on a streak before I'm taking it easy.
 
 I've run 79km in 536 minutes, making my average pace about 6.8min/km.
 Here's a barplot with date and distances to show how the streak has run. The data are from the `filtered_runs` object created using the script from the previous post:
-``` {r eval = FALSE}
-ggplot(filtered_runs, aes(x = start_date_local, y = distance)) + 
+```{r eval = FALSE}
+ggplot(filtered_runs, aes(x = start_date_local, y = distance)) +
   geom_bar(stat = "identity", fill = "blue") +
   xlab("Date") + ylab("Distance") +
   ggtitle("Distance per Day")
 ```
 ![](/img/22nd_distance.jpeg)
-For the longer runs you can see a sight upwards trend (longer distance). This is interesting because 7 of the 9 were exactly the same 'workout' on my watch: 45mins @<150bpm heartrate. This means I'm running further in the same time for roughly the same heart work. 
+For the longer runs you can see a sight upwards trend (longer distance). This is interesting because 7 of the 9 were exactly the same 'workout' on my watch: 45mins @<150bpm heartrate. This means I'm running further in the same time for roughly the same heart work.
 
 Ok, so let's see a simplae scatter plot with economy over time, colour-shaded for distance.
-``` {r eval = FALSE}
+```{r eval = FALSE}
 ggplot(filtered_runs, aes(x = start_date_local, y = economy, colour = distance)) +
   geom_point(size = 2) +
   geom_smooth() +
-  xlab("Date") + ylab("Economy") + 
+  xlab("Date") + ylab("Economy") +
   ggtitle("Relative Running Economy")
 ```
 ![](/img/22nd_economy.jpeg)
 
-All those lighter coloured points down low make it clear that there is a difference in economy between longer and shorter runs. I suspect this has to do with it taking about 2-3mins for my heartrate to come up to average (a 1km run takes me about 6mins), but I'll explore that more at the end of the experiment. 
+All those lighter coloured points down low make it clear that there is a difference in economy between longer and shorter runs. I suspect this has to do with it taking about 2-3mins for my heartrate to come up to average (a 1km run takes me about 6mins), but I'll explore that more at the end of the experiment.
 
 What's also clear for now is that there is an upwards trend in economy. This appears to be the case for both shorter and longer runs. But again, more in the next post.
